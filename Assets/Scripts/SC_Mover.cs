@@ -15,8 +15,7 @@ public class SC_Mover : MonoBehaviour
         {
             MoveToCursor();
         }  
-
-
+        UpdateAnimator();
     }
 
     void MoveToCursor()
@@ -31,5 +30,13 @@ public class SC_Mover : MonoBehaviour
 
         }
     
+    }
+
+    void UpdateAnimator()
+    {
+        Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        GetComponent<Animator>().SetFloat("forwardSpeed", speed);
     }
 }
