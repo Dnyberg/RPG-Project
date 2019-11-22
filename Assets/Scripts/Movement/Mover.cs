@@ -25,6 +25,7 @@ namespace RPG.Movement
         {
             GetComponent<ActionScheduler>().StartAction(this);
 
+            transform.LookAt(destination);
             MoveTo(destination);
         }
 

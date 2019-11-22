@@ -10,6 +10,11 @@ namespace RPG.Combat
 
         bool isDead = false;
 
+        public bool IsDead()
+        {
+            return isDead;
+        }
+
         public void TakeDamage(float damage)
         {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
@@ -25,6 +30,10 @@ namespace RPG.Combat
             if(isDead) return;
 
             isDead = true;
+
+            // For objects that miss animator. 
+            if (!GetComponent<Animator>()) return;
+            
             GetComponent<Animator>().SetTrigger("die");
         }
     }

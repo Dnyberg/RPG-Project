@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Core
 {
-    public class SC_FollowCamera : MonoBehaviour
+    public class FollowCamera : MonoBehaviour
     {
 
         [SerializeField] Transform target;
