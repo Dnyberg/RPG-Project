@@ -48,7 +48,6 @@ namespace RPG.Control
         private void RandomizeWaypointDwellTime()
         {
             waypointDwellTime = UnityEngine.Random.Range(waypointDwellTimeMin, waypointDwellTimeMax);
-            print(waypointDwellTime);
         }
 
         void Update()
@@ -141,7 +140,7 @@ namespace RPG.Control
             return distanceToPlayer < chaseDistance;
         }
 
-        //Called by Unity
+        //Called by Unity Editor
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.cyan;
