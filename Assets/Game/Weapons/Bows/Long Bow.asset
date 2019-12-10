@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5466d7f00b81591418c1188adc2126bc, type: 3}
+  m_Name: Long Bow
+  m_EditorClassIdentifier: 
+  animatorOverride: {fileID: 22100000, guid: e4f9977079960c546ba1397c6817725d, type: 2}
+  equippedPrefab: {fileID: 6261077773443102049, guid: 7daace8826372e240964a737927a783f,
+    type: 3}
+  weaponDamage: 15
+  weaponRange: 20
+  projectile: {fileID: 3561470358835960533, guid: a54ecbabfbc65e44197e68ce434b8b7d,
+    type: 3}
+  isRightHanded: 0
