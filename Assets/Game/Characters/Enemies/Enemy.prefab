@@ -984,6 +984,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2832860888788064492, guid: d581903996835eb4488ae55edf4d7d84,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4839897088366696402, guid: d581903996835eb4488ae55edf4d7d84,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1085,6 +1090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: healthPoints
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1208884771793907731, guid: d581903996835eb4488ae55edf4d7d84,
+        type: 3}
+      propertyPath: characterClass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d581903996835eb4488ae55edf4d7d84, type: 3}

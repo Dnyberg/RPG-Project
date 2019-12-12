@@ -203,6 +203,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8941ba1519d2ecb4d9e6b95b23425370,
         type: 2}
+    - target: {fileID: 2191477448337259995, guid: 7997733a750361142af3167fcb3df9f6,
+        type: 3}
+      propertyPath: defaultWeaponName
+      value: Long Bow
+      objectReference: {fileID: 0}
     - target: {fileID: 2425810730248737682, guid: 7997733a750361142af3167fcb3df9f6,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -228,5 +233,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 78be5954566d2d848918e51832341fa3, type: 2}
+    - target: {fileID: 468415658885541754, guid: 7997733a750361142af3167fcb3df9f6,
+        type: 3}
+      propertyPath: characterClass
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7997733a750361142af3167fcb3df9f6, type: 3}

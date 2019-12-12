@@ -2,15 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Core;
+using RPG.Resources;
 
 namespace RPG.Combat
 {
     public class Projectile : MonoBehaviour
     {
         [SerializeField] float speed = 1f;
+        [SerializeField] float maxLifeTime = 10f;
         [SerializeField] bool isHoming = true;
         [SerializeField] GameObject hitEffect = null;
+        [SerializeField] GameObject[] destroyOnHit = null;
+        [SerializeField] float lifeAfterImpact = 2f;
 
         float damage = 0;
         Vector3 randomPosition;
@@ -39,6 +42,8 @@ namespace RPG.Combat
         {
             this.target = target;
             this.damage = damage;
+
+            Destroy(gameObject, maxLifeTime);
         }
 
         private Vector3 GetAimLocation()
@@ -57,13 +62,21 @@ namespace RPG.Combat
             if (target.IsDead()) return;
             target.TakeDamage(damage);
 
+            speed = 0f;
+
             if (hitEffect != null)
             {
                 Instantiate(hitEffect, transform.position, transform.rotation);
             }
-            Destroy(gameObject);
 
-            
+            foreach (GameObject toDestroy in destroyOnHit)
+            {
+                Destroy(toDestroy);
+            }
+
+            Destroy(gameObject, lifeAfterImpact);
+
+
             //StartCoroutine(DealDamage());
 
         }

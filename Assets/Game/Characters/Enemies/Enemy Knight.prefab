@@ -203,6 +203,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0f873dbb5520da947aa927c99b4d64b3,
         type: 2}
+    - target: {fileID: 2191477448337259995, guid: 7997733a750361142af3167fcb3df9f6,
+        type: 3}
+      propertyPath: defaultWeaponName
+      value: Sword
+      objectReference: {fileID: 0}
     - target: {fileID: 2425810730248737682, guid: 7997733a750361142af3167fcb3df9f6,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
