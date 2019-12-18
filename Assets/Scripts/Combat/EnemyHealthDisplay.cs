@@ -1,4 +1,5 @@
 using System;
+using RPG.Resources;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,10 +16,13 @@ namespace RPG.Combat
 
         private void Update()
         {
-            if(fighter.GetTarget() == null){
+            if (fighter.GetTarget() == null)
+            {
                 GetComponent<Text>().text = "N/A";
+                return;
             }
-            GetComponent<Text>().text = String.Format("{0:0}%", fighter.GetTarget());
+            Health health = fighter.GetTarget();
+            GetComponent<Text>().text = String.Format("{0:0}%", health.GetPercentage());
         }
     }
 }

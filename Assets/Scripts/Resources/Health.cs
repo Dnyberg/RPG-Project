@@ -3,6 +3,7 @@ using System.Collections;
 using RPG.Saving;
 using RPG.Stats;
 using RPG.Core;
+using System;
 
 namespace RPG.Resources
 {
@@ -24,15 +25,17 @@ namespace RPG.Resources
         }
 
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             print($"<color=yellow> {gameObject.name} </color>" + " health is " + $"<color=red> {healthPoints} </color>");
             if (healthPoints == 0)
             {
                 Die();
+                AwardExperience(instigator);
             }
         }
+
 
         public float GetPercentage()
         {
@@ -52,6 +55,14 @@ namespace RPG.Resources
 
             GetComponent<Animator>().SetTrigger("die");
 
+        }
+
+        private void AwardExperience(GameObject instigator)
+        {
+            Experience experience = instigator.GetComponent<Experience>();
+            if (experience == null) return;
+
+            experience.GainExperience(GetComponent<BaseStats>().GetExperienceReward());
         }
 
         public object CaptureState()
