@@ -11,7 +11,7 @@ namespace RPG.SceneManagement
 
         const string defaultSaveFile = "save";
         [SerializeField] float fadeInTime = 0.3f;
-        
+
         IEnumerator Start()
         {
             Fader fader = FindObjectOfType<Fader>();
@@ -27,9 +27,13 @@ namespace RPG.SceneManagement
                 Load();
             }
 
-            if (Input.GetKeyDown(KeyCode.S)) 
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 Save();
+            }
+            if (Input.GetKeyDown(KeyCode.Delete))
+            {
+                Delete();
             }
         }
 
@@ -41,6 +45,11 @@ namespace RPG.SceneManagement
         public void Load()
         {
             GetComponent<SavingSystem>().Load(defaultSaveFile);
+        }
+
+        public void Delete()
+        {
+            GetComponent<SavingSystem>().Delete(defaultSaveFile);
         }
     }
 }
