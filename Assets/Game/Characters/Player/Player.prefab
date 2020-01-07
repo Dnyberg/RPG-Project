@@ -121,6 +121,12 @@ PrefabInstance:
       propertyPath: startingLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1208884771793907731, guid: d581903996835eb4488ae55edf4d7d84,
+        type: 3}
+      propertyPath: levelUpParticleEffect
+      value: 
+      objectReference: {fileID: 6825996421531245444, guid: f2714a28ec005254082a8c216f84e484,
+        type: 3}
     - target: {fileID: 589768021398397618, guid: d581903996835eb4488ae55edf4d7d84,
         type: 3}
       propertyPath: timeBetweenAttacks

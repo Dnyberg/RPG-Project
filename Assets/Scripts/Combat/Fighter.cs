@@ -5,6 +5,7 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Resources;
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -21,7 +22,7 @@ namespace RPG.Combat
 
 
         Health target;
-        float timeSinceLaastAttack = Mathf.Infinity;
+        float timeSinceLastAttack = Mathf.Infinity;
         Weapon currentWeapon = null;
 
         private void Start()
@@ -35,7 +36,7 @@ namespace RPG.Combat
 
         private void Update()
         {
-            timeSinceLaastAttack += Time.deltaTime;
+            timeSinceLastAttack += Time.deltaTime;
 
             if (target == null) return;
             if (target.IsDead()) return;
@@ -56,12 +57,11 @@ namespace RPG.Combat
         {
             transform.LookAt(target.transform);
 
-            if (timeSinceLaastAttack >= timeBetweenAttacks)
+            if (timeSinceLastAttack >= timeBetweenAttacks)
             {
                 // This will trigger the Hit() event.
                 TriggerAttack();
-                timeSinceLaastAttack = 0f;
-
+                timeSinceLastAttack = 0f;
             }
         }
 
@@ -76,13 +76,14 @@ namespace RPG.Combat
         {
             if (target == null) return;
 
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject,damage);
             }
             else
             {
-                target.TakeDamage(gameObject, currentWeapon.GetDamage());
+                target.TakeDamage(gameObject, damage);
             }
         }
 
@@ -126,6 +127,7 @@ namespace RPG.Combat
             currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+            timeBetweenAttacks = weapon.GetTimeBetweenAttacks();
         }
 
         public Health GetTarget()

@@ -11,6 +11,7 @@ namespace RPG.Combat
         [SerializeField] GameObject equippedPrefab = null;
         [SerializeField] float weaponDamage = 10f;
         [SerializeField] float weaponRange = 2f;
+        [SerializeField] float timeBetweenAttacks = 1.2f;
         [SerializeField] Projectile projectile = null;
         [SerializeField] bool isRightHanded = true;
 
@@ -65,10 +66,10 @@ namespace RPG.Combat
             return projectile != null;
         }
 
-        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator)
+        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator, float calculatedDamage)
         {
             Projectile projectileInstance = Instantiate(projectile, GetTransform(rightHand, leftHand).position, Quaternion.identity);
-            projectileInstance.SetTarget(target, instigator, weaponDamage);
+            projectileInstance.SetTarget(target, instigator, calculatedDamage);
         }
 
         public float GetDamage()
@@ -79,6 +80,11 @@ namespace RPG.Combat
         public float GetRange()
         {
             return weaponRange;
+        }
+
+        public float GetTimeBetweenAttacks()
+        {
+            return timeBetweenAttacks;
         }
     }
 }
