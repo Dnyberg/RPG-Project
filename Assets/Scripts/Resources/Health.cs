@@ -13,8 +13,10 @@ namespace RPG.Resources
         //[SerializeField] float regenerationPercentage = 70;
 
         float healthPoints = -1f;
+        float damageTaken;
 
         bool isDead = false;
+       public bool takesDamage = false;
 
         private void Start()
         {
@@ -36,13 +38,20 @@ namespace RPG.Resources
         {
             print($"<color=yellow> {gameObject.name} </color>" + " took " + $"<color=red> {damage} </color>" + " damage");
 
+            takesDamage = true;
             healthPoints = Mathf.Max(healthPoints - damage, 0);
-    
+            damageTaken = damage;
+
             if (healthPoints == 0)
             {
                 Die();
                 AwardExperience(instigator);
             }
+        }
+
+        public float GetDamageTaken()
+        {
+            return damageTaken;
         }
 
         public float GetHealtPoints()
