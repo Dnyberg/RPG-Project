@@ -1,4 +1,5 @@
-﻿using RPG.Combat;
+﻿using GameDevTV.Utils;
+using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
 using RPG.Resources;
@@ -12,7 +13,7 @@ namespace RPG.Control
     public class AIController : MonoBehaviour
     {
 
-        [Range(0,1)]
+        [Range(0, 1)]
         [SerializeField] float patrolSpeedFraction = 0.2f;
         [SerializeField] float chaseDistance = 5f;
         [SerializeField] float suspicionTime = 5f;
@@ -27,23 +28,32 @@ namespace RPG.Control
         Mover mover;
         //CapsuleCollider capsuleCollider;
 
-        Vector3 guardPosition;
+        LazyValue<Vector3> guardPosition;
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         float waypointDwellTime;
         int currentWaypointIndex = 0;
 
-        private void Start()
+        private void Awake()
         {
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             player = GameObject.FindWithTag("Player");
             //capsuleCollider = GetComponent<CapsuleCollider>();
             mover = GetComponent<Mover>();
-            RandomizeWaypointDwellTime();
-            
+            guardPosition = new LazyValue<Vector3>(GetGuardPosition);
+        }
 
-            guardPosition = transform.position;
+        private Vector3 GetGuardPosition()
+        {
+            return transform.position;
+        }
+
+        private void Start()
+        {
+            RandomizeWaypointDwellTime();
+
+            guardPosition.ForceInit();
         }
 
         private void RandomizeWaypointDwellTime()
@@ -98,7 +108,7 @@ namespace RPG.Control
         private void PatrolBehaviour()
         {
 
-            Vector3 nextPosition = guardPosition;
+            Vector3 nextPosition = guardPosition.value;
 
             if (patrolPath != null)
             {
@@ -113,7 +123,7 @@ namespace RPG.Control
 
             if (timeSinceArrivedAtWaypoint > waypointDwellTime)
             {
-            mover.StartMoveAction(nextPosition, patrolSpeedFraction);
+                mover.StartMoveAction(nextPosition, patrolSpeedFraction);
 
             }
         }
@@ -136,8 +146,8 @@ namespace RPG.Control
 
         private bool InAttackkRangeOfPlayer()
         {
-            
-            float distanceToPlayer =  Vector3.Distance(player.transform.position, transform.position);
+
+            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
             return distanceToPlayer < chaseDistance;
         }
 

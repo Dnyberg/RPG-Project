@@ -21,12 +21,14 @@ namespace RPG.Combat
         Vector3 randomPosition;
         Health target = null;
         new CapsuleCollider collider;
-
-        private void Start()
+        private void Awake()
         {
             collider = GetComponent<CapsuleCollider>();
             randomPosition = new Vector3(UnityEngine.Random.Range(-0.2f, 0.2f), UnityEngine.Random.Range(-0.2f, 0.6f), 0);
+        }
 
+        private void Start()
+        {
             transform.LookAt(GetAimLocation());
         }
 
