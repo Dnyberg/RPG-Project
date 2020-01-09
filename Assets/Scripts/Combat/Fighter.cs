@@ -25,7 +25,7 @@ namespace RPG.Combat
 
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
-        LazyValue<Weapon> currentWeapon;
+        public LazyValue<Weapon> currentWeapon;
 
         private void Awake()
         {

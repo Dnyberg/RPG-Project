@@ -31,11 +31,10 @@ namespace RPG.Resources
         public IEnumerator ShowDamageTaken()
         {
             health.takesDamage = false;
-            print("1");
             GetComponent<Text>().text = String.Format("{0:0}", health.GetDamageTaken());
             yield return new WaitForSeconds(1);
             GetComponent<Text>().text = String.Format("{0:0}", "");
-            print("2");
+
         }
     }
 }
