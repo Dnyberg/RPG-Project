@@ -13,13 +13,14 @@ GameObject:
   - component: {fileID: 4275770103104632303}
   - component: {fileID: 3842187175214818939}
   - component: {fileID: 2807971917068045948}
+  - component: {fileID: 5668576036396300720}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6842420610142410940
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112,6 +113,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7140a15e24836e646b423856e2da6166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &5668576036396300720
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660501704583329137}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!136 &8865542276938933498
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -143,7 +156,7 @@ MonoBehaviour:
     texture: {fileID: 2800000, guid: 21628736160fcc9488493401da3ef621, type: 3}
     hotspot: {x: 0, y: 0}
   - type: 1
-    texture: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
+    texture: {fileID: 2800000, guid: 8859fce41c5d0a148ad0b7eebfca7fe9, type: 3}
     hotspot: {x: 0, y: 0}
   - type: 2
     texture: {fileID: 2800000, guid: 2d18e23e3ce249b4489b8bcdd02d3f48, type: 3}
@@ -151,6 +164,14 @@ MonoBehaviour:
   - type: 3
     texture: {fileID: 2800000, guid: d65d95ca16518034fa82669a92d0b6e7, type: 3}
     hotspot: {x: 0, y: 0}
+  - type: 4
+    texture: {fileID: 2800000, guid: 13b47201502803547bf2c87d10639cb9, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 5
+    texture: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
+    hotspot: {x: 0, y: 0}
+  maxNavMeshProjectionDistance: 1
+  maxNavPathLength: 40
 --- !u!114 &5845343760681881547
 MonoBehaviour:
   m_ObjectHideFlags: 0
