@@ -6,6 +6,10 @@ namespace RPG.Stats
         ExperienceReward,
         ExperienceToLevelUp,
         Damage,
-        Stamina
+        Stamina,
+        Strength,
+        Agillity,
+        Spirit,
+        Intelligence
     }
 }

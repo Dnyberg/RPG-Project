@@ -31,8 +31,10 @@ namespace RPG.Attributes
 
         private float GetInitialHealth()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.Health);
+            return GetHealthWithStamina();
         }
+
+
 
         private void Start()
         {
@@ -81,9 +83,14 @@ namespace RPG.Attributes
             return healthPoints.value;
         }
 
+        private float GetHealthWithStamina()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.Health) + GetComponent<BaseStats>().GetStat(Stat.Stamina);
+        }
+
         public float GetMaxHealthPoints()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.Health);
+            return GetHealthWithStamina();
         }
 
         public float GetPercentage()
@@ -92,7 +99,7 @@ namespace RPG.Attributes
         }
 
         public float GetFraction(){
-            return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
+            return healthPoints.value / GetHealthWithStamina();
         }
 
         private void Die()
@@ -122,7 +129,7 @@ namespace RPG.Attributes
         {
             //float regenHealthPoints = GetComponent<BaseStats>().GetStat(Stat.Health) * (regenerationPercentage / 100);
             //healthPoints = Mathf.Max(healthPoints, regenHealthPoints);
-            healthPoints.value = GetComponent<BaseStats>().GetStat(Stat.Health);
+            healthPoints.value = GetHealthWithStamina();
         }
 
         public object CaptureState()
