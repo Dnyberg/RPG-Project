@@ -10,6 +10,8 @@ namespace RPG.Stats
         Strength,
         Agillity,
         Spirit,
-        Intelligence
+        Intelligence,
+        CritChance,
+        HitChance
     }
 }

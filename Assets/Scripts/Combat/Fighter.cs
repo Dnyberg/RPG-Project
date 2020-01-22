@@ -22,7 +22,6 @@ namespace RPG.Combat
         [SerializeField] Weapon defaultWeapon = null;
 
 
-
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
         public LazyValue<Weapon> currentWeapon;
@@ -78,14 +77,24 @@ namespace RPG.Combat
         {
             GetComponent<Animator>().ResetTrigger("stopAttack");
             GetComponent<Animator>().SetTrigger("attack");
+            GetComponent<Animator>().SetFloat("attackSpeedMultiplier", 1 / timeBetweenAttacks);
         }
 
         // Animation Event. Called from animation.
         void Hit()
         {
+            float damage = 0f;
             if (target == null) return;
 
-            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+            if (25 > UnityEngine.Random.Range(0, 100))
+            {
+                damage = GetComponent<BaseStats>().GetStat(Stat.Damage) * 2;
+            }
+            else
+            {
+                damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+            }
+
             if (currentWeapon.value.HasProjectile())
             {
                 currentWeapon.value.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
@@ -143,7 +152,11 @@ namespace RPG.Combat
         {
             if (stat == Stat.Damage)
             {
-                yield return currentWeapon.value.GetPercentageBonus();
+                yield return currentWeapon.value.GetDamagePercentageBonus();
+            }
+            if (stat == Stat.CritChance)
+            {
+                yield return currentWeapon.value.GetCritPercentageBonus();
             }
         }
 
